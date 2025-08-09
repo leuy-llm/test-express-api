@@ -1,0 +1,20 @@
+import { buildServer } from "./app";
+import { ENV } from "./config/env";
+
+const start = async () => {
+  const server: any = await buildServer();
+
+  try {
+    await server.listen({ port: ENV.PORT, host: "0.0.0.0" });
+  } catch (err) {
+    console.error("Server failed to start:", err); // fixed
+    process.exit(1);
+  }
+};
+
+start();
+
+process.on("unhandledRejection", (err) => {
+  console.error(err);
+  process.exit(1);
+});

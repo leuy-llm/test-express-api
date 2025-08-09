@@ -1,0 +1,1 @@
+export const getTourDetailData = async (req: Request, res: Response): Promise<void> => {}
